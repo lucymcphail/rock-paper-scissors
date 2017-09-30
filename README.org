@@ -1,0 +1,27 @@
+* rock-paper-scissors
+
+  A rock, paper, scissors game using an "intelligent" algorithm.
+
+** Installation and Usage
+
+   Download the jar file from FILEPATH. To launch it, run using this command:
+
+   #+BEGIN_SRC
+   $ java -jar rock-paper-scissors.jar
+   #+END_SRC
+   
+** Theory
+
+   This game works using two algorithms. The first exploits human psycology, the second uses basic machine learning principles.
+
+   The first algorithm is based on simple logic: if you win, you will want to play the same item again; if you lose, you will avoid it. Based on this, if you lose, you should play what didn't come up and if you win, you should play what your opponent just played. This Numberphile episode with fellow redhead Hannah Fry describes this in more detail:
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/rudzYPHuewc" frameborder="0" allowfullscreen></iframe>
+
+   The problem with this is it's perfectly predictable, when someone works out what's going on. So, the second algorithm has a 25% chance of being used. Every time the player makes a choice, the item that would beat the player's choice becomes more heavily weighted. The more weighted an item is, the more likely it is to be chosen whenever the second algorithm is used.
+
+   Combined, these two algorithms create an overall fairly intelligent AI that will probably beat a human who does not know how to exploit it.
+
+** License
+
+   rock-paper-scissors is licensed under the [[file:LICENSE.txt][MIT license]]
