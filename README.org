@@ -4,10 +4,22 @@
 
 ** Installation and Usage
 
-   Download the jar file from FILEPATH. To launch it, run using this command:
+   Firstly, make sure you have [[https://leiningen.org][leiningen]] installed on your system. Leiningen is a build tool for Clojure, and is neccesary to run or compile the program. Once leiningen is installed, you can run the game with:
 
    #+BEGIN_SRC
-   $ java -jar rock-paper-scissors.jar
+   $ lein run
+   #+END_SRC
+
+   Alternatively, if you want to run the program on a computer without leiningen, you can generate a Java file using:
+
+   #+BEGIN_SRC
+   $ lein uberjar
+   #+END_SRC
+
+   The .jar file can be found in =/target/uberjar/=, copied onto another computer and run with the following command:
+
+   #+BEGIN_SRC
+   $ java -jar path/to/file/rock-paper-scissors-0.1.0-standalone.jar
    #+END_SRC
    
 ** Theory
