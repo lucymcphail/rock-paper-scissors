@@ -16,7 +16,7 @@
 
    The first algorithm is based on simple logic: if you win, you will want to play the same item again; if you lose, you will avoid it. Based on this, if you lose, you should play what didn't come up and if you win, you should play what your opponent just played. This Numberphile episode with fellow redhead Hannah Fry describes this in more detail:
 
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/rudzYPHuewc" frameborder="0" allowfullscreen></iframe>
+   [[https://www.youtube.com/embed/rudzYPHuewc][Winning at Rock Paper Scissors - Numberphile]]
 
    The problem with this is it's perfectly predictable, when someone works out what's going on. So, the second algorithm has a 25% chance of being used. Every time the player makes a choice, the item that would beat the player's choice becomes more heavily weighted. The more weighted an item is, the more likely it is to be chosen whenever the second algorithm is used.
 
