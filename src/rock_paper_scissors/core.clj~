@@ -1,0 +1,26 @@
+(ns rock-paper-scissors.core
+  (:gen-class))
+
+(defn -main
+  "I don't do a whole lot ... yet."
+  [& args]
+  (println "Hello, World!"))
+
+(defn round
+  "Play a round of Rock, Paper, Scissors"
+  [player computer]
+  (println (str "Choose Rock, paper, or scissors. Your score: " player ", Computer score: " computer))
+  (let [player-choice (clojure.string/lower-case (read-line))
+        computer-choice (computer-play)]
+    (println (str "Your choice: " player-choice))
+    (println (str "Computer choice: " computer-choice))))
+
+(defn computer-play
+  "Choose whether to play rock, paper or scissors"
+  []
+  (let [choice (rand-int 3)]
+    (cond
+      (= choice 0) "rock"
+      (= choice 1) "paper"
+      (= choice 2) "scissors"
+      :else nil)))
