@@ -1,10 +1,11 @@
 (ns rock-paper-scissors.core
-  (:gen-class))
+  (:gen-class)
+  (:require clojure.pprint))
        
-(def items
-  [{:name "rock"     :beats "scissors" :loses "paper"    :likelihood 1}   
-   {:name "paper"    :beats "rock"     :loses "scissors" :likelihood 1}
-   {:name "scissors" :beats "paper"    :loses "rock"     :likelihood 1}])
+;; (def items
+;;   [{:name "rock"     :beats "scissors" :loses "paper"    :likelihood 1}   
+;;    {:name "paper"    :beats "rock"     :loses "scissors" :likelihood 1}
+;;    {:name "scissors" :beats "paper"    :loses "rock"     :likelihood 1}])
 
 (def item-index
   {"rock"     0
@@ -93,16 +94,21 @@
          items [{:name "rock"     :beats "scissors" :loses "paper"    :likelihood 1}   
                 {:name "paper"    :beats "rock"     :loses "scissors" :likelihood 1}
                 {:name "scissors" :beats "paper"    :loses "rock"     :likelihood 1}]]
+    (if (= (first args) "debug")
+      (do (clojure.pprint/pprint items)
+          (println "")))
     (let [[player-choice & round-output] (round player-score computer-score ai-input)]
       (if (nth round-output 0)
         (let [result (nth round-output 0)
-              weighted-items (inc-likelihood (get items (get item-index player-choice)) items)]
+              weighted-items (inc-likelihood
+                              (:loses (get items (get item-index player-choice)))
+                              items)]
           (cond
             (= result "win")
-            (recur (inc player-score) computer-score round-output items)
+            (recur (inc player-score) computer-score round-output weighted-items)
             (= result "loss")
-            (recur player-score (inc computer-score) round-output items)
+            (recur player-score (inc computer-score) round-output weighted-items)
             :else
-            (recur player-score computer-score round-output items)))
+            (recur player-score computer-score round-output weighted-items)))
         nil))))
  
