@@ -11,6 +11,12 @@
    "paper"    1
    "scissors" 2})
 
+(defn clear
+  "Clear the terminal window"
+  []
+  (print (str (char 27) "[2J"))
+  (print (str (char 27) "[;H")))
+
 (defn take-input
   "Take an input from the user"
   [x]
@@ -62,22 +68,25 @@
   [player-score
    computer-score
    ai-input]
+  (println "brucekly's rock, paper, scissors")
+  (println "Type in r (rock), p (paper) or s (scissors)")
+  (println "")
   (println (str "Your score: " player-score ", Computer score: " computer-score))
   (println "")
   (let [player-choice (take-input (read-line))
         computer-choice (apply computer-play ai-input)
         result (find-winner player-choice computer-choice)]
+    (clear)
     (println (str "Your choice: " player-choice))
     (println (str "Computer choice: " computer-choice))
     (println (str "Result: " result))
+    (println "")
     (vec [player-choice result computer-choice])))
 
 (defn -main
   "Run the main game loop"
   [& args]
-  (println "brucekly's rock, paper, scissors")
-  (println "Type in r (rock), p (paper) or s (scissors)")
-  (println "")
+  (clear)
   (loop [player-score 0
          computer-score 0
          ai-input [nil, nil]
